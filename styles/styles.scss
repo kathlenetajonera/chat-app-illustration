@@ -1,0 +1,343 @@
+@import "./variables";
+@import "./reset";
+@import "./mixins";
+@import "./animations";
+
+.landing {
+    padding: 4rem 2rem;
+    position: relative;
+    background-color: $appBg;
+    overflow-x: hidden;
+
+    display: flex;
+    place-items: center;
+    min-height: 100vh;
+
+    &::before {
+        content: "";
+        display: block;
+        width: Min(410px, 50vw);
+        height: 60vh;
+        background: linear-gradient(-120deg,$gradient);
+        border-radius: 0 0 15rem 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+
+        @include mediaQuery(tablet) {
+            height: 80vh;
+            border-radius: 0 0 15rem 15rem;
+            left: -5%;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        width: Min(410px, 50vw);
+        height: 60vh;
+        background: #f7f5fa;
+        border-radius: 15rem 0 0 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+
+        @include mediaQuery(tablet) {
+            height: 80vh;
+            border-radius: 15rem 15rem 0 0;
+            right: -5%;
+        }
+    }
+
+    .container {
+        display: grid;
+        align-items: center;
+        grid-gap: 3rem;
+        position: relative;
+        z-index: 999;
+        width: Min(1094px, 100%);
+        margin: 0 auto;
+        cursor: default;
+
+        @include mediaQuery(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include mediaQuery(desktop) {
+            grid-gap: 0;
+        }
+
+        .app {
+            border: .8rem solid white;
+            background-color: #f5f3f7;
+            border-radius: 2rem;
+            box-shadow: 3px 10px 1rem 0 #efeef1;
+            width: Min(270px, 85%);
+            margin: 0 auto;
+
+            .header {
+                background: linear-gradient(to left, $gradient);
+                padding: 2.2rem 1.5rem .8rem;
+                border-radius: 1.3rem 1.3rem .5rem .5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    width: 50%;
+                    height: 25px;
+                    background-color: $white;
+                    border-radius: 0 0 2rem 2rem;
+                    position: absolute;
+                    top: -1%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                .profile {
+                    display: flex;
+                    align-items: center;
+
+                    .arrow {
+                        span {
+                            width: 3px;
+                            height: 10px;
+                            background-color: $white;
+                            display: block;
+                            transform-origin: -2px;
+                            border-radius: 2rem;
+
+                            &:first-child {
+                                transform: rotate(35deg);
+                            }
+
+                            &:last-child {
+                                transform: rotate(-35deg);
+                            }
+                        }
+                    }
+
+                    img {
+                        max-width: 15%;
+                        border: 2px solid $white;
+                        border-radius: 50%;
+                        margin: 0 .6rem;
+                    }
+
+                    .details {
+                        .name {
+                            color: $white;
+                            font-weight: 500;
+                            font-size: .7rem;
+                        }
+
+                        .status {
+                            color: $statusText;
+                            font-size: .5rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .settings {
+                    span {
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        background-color: $white;
+                        border-radius: 50%;
+                        margin-bottom: 2px;
+                    }
+                }
+            }
+
+            .conversations {
+                background-color: $appBg;
+                padding: .8rem;
+                border-radius: 0 0 1.3rem 1.3rem;
+
+                .message {
+                    width: 140px;
+                    padding: .5rem;
+                    margin-bottom: .5rem;
+                    font-size: .5rem;
+
+                    &.dog-walker {
+                        background-color: $dogWalkerBg;
+                        border-radius: .5rem .5rem .5rem .3rem;
+                        color: $dogWalkerText;
+                    }
+
+                    &.dog-owner {
+                        background-color: $white;
+                        border-radius: .5rem .5rem .3rem .5rem;
+                        margin-left: auto;
+                        color: $dogOwnerText;
+                        box-shadow: 0 3px 8px 0 #efeef1;
+                    }
+
+                    &.short-msg {
+                        width: 90px;
+                    }
+                }
+
+                .photos {
+                    width: 130px;
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-bottom: .5rem;
+
+                    img {
+                        max-width: calc(100% / 3);
+                        margin-left: 6px;
+                        border-radius: .5rem;
+                    }
+
+                    &.dog-owner {
+                        margin-left: auto;
+                    }
+                }
+
+                .schedule {
+                    background: linear-gradient(to right, $gradient);
+                    padding: .5rem 1.3rem .5rem .5rem;
+                    border-radius: .5rem .5rem .5rem .3rem;
+                    margin-bottom: .5rem;
+                    width: 80%;
+                    color: $white;
+
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .details {
+                        font-size: .5rem;
+                        display: flex;
+                        align-items: center;
+
+                        span {
+                            width: 15px;
+                            height: 15px;
+                            display: inline-block;
+                            border: 2px solid $radioBtn;
+                            margin-right: .5rem;
+                            border-radius: 50%;
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                display: inline-block;
+                                width: 8px;
+                                height: 8px;
+                                background-color: $radioBtn;
+                                border-radius: 50%;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+
+                    .rate {
+                        font-size: .8rem;
+                        font-weight: 700;
+                    }
+                }
+
+                .form {
+                    position: relative;
+                    margin-top: .8rem;
+                    
+                    input {
+                        outline: none;
+                        border: none;
+                        border-radius: 2rem;
+                        padding: .8rem .8rem .8rem 1rem;
+                        width: 100%;
+                        font-size: .5rem;
+
+                        &:disabled {
+                            background-color: $white;
+                        }
+
+                        &::placeholder {
+                            color: $placeholderText;
+                        }
+                    }
+
+                    #send {
+                        outline: none;
+                        border: none;
+                        position: absolute;
+                        top: 50%;
+                        right: 1.5%;
+                        transform: translateY(-50%);
+                        background-color: #3e2753;
+                        width: 28.47px;
+                        height: 80%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        border-radius: 50%;
+
+                        span {
+                            display: block;
+                            width: 9px;
+                            height: 3px;
+                            background-color: $white;
+                            transform-origin: 6px;
+                            border-radius: 2rem;
+
+                            &:first-child {
+                                transform: rotate(40deg);
+                            }
+
+                            &:last-child {
+                                transform: rotate(-40deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .headline {
+            text-align: center;
+            width: Min(441.89px, 100%);
+            margin: 0 auto;
+
+            @include mediaQuery(tablet) {
+                text-align: left;
+            }
+
+            h1 {
+                color: $mainHeading;
+                font-size: 2.5rem;
+                font-weight: 500;
+            }
+
+            p {
+                color: $bodyText;
+                line-height: 1.8rem;
+                margin: 1rem 0;
+            }
+        }
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    padding: 1rem;
+
+    a {
+        color: hsl(228, 45%, 44%);
+        text-decoration: none;
+    }
+}

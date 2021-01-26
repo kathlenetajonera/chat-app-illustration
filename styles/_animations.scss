@@ -1,0 +1,47 @@
+.convo {
+    opacity: 0;
+    animation: fade-In 1s ease forwards;
+
+    &.first {
+        animation-delay: .2s;
+    }
+
+    &.second {
+        animation-delay: .6s;
+    }
+
+    &.third {
+        animation-delay: 1s;
+    } 
+
+    &.fourth {
+        animation-delay: 1.4s;
+    }
+    
+    &.fifth {
+        animation-delay: 1.8s;
+    }
+
+    &.sixth {
+        animation-delay: 2.2s;
+    }
+
+    &.seventh {
+        animation-delay: 2.6s;
+    }
+
+    &.eighth {
+        animation-delay: 3s;
+    }
+}
+
+
+@keyframes fade-In {
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
